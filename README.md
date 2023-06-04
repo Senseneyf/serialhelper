@@ -1,2 +1,2 @@
 # serialhelper
-A simple batch script that makes launching a serial session to chassie and rack managers faster.
+A simple batch script that makes starting a serial session with CMs/RMs faster.
