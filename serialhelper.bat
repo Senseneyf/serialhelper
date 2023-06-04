@@ -1,12 +1,12 @@
 @echo off
-color 0a
+rem color 0a
 
 set putty=putty.exe
 set port=""
 
 :menu
 cls
-echo Serial Helper 1.1 Franklin Senseney
+echo Serial Helper 1.1 by Franklin Senseney
 echo ===================================================
 echo 1 - Start a serial session
 echo 2 - Start a serial session with logging enabled
