@@ -54,7 +54,7 @@ goto menu
 
 :cm_ref
 cls
-echo Chassie Manager commands
+echo Chassis Manager commands
 echo/
 echo Title                          ^|      Command
 echo ===================================================
@@ -79,7 +79,7 @@ goto cmd_ref_menu
 cls
 echo Command Reference
 echo ===================================================
-echo 1 - Chassie Manager commands
+echo 1 - Chassis Manager commands
 echo 2 - Rack Manager commands
 echo q - Back to main menu
 echo qq - Quit
