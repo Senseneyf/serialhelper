@@ -1,5 +1,5 @@
 @echo off
-rem color 0a
+color 0a
 
 set putty=putty.exe
 set port=""
@@ -22,7 +22,6 @@ if %option% == 2 goto serial_logging
 if %option% == 3 goto view_ports
 if %option% == 4 goto cmd_ref_menu
 if /i "%option%" == "q" goto end
-if defined %port% echo %port%
 echo %option% is not a valid option
 pause
 goto menu
@@ -60,6 +59,7 @@ echo Title                          ^|      Command
 echo ===================================================
 echo Esblish connection with CM     ^|      wcscli -establishcmconnection -s 1 -u USERNAME -x PASSWORD
 echo Start serial session           ^|      wsccli -starbladeserialsession -i BLADE_INDEX
+echo View memory present in blade   ^|      wsccli -getbladehealth -i BLADE_INDEX -m
 echo/
 pause
 goto cmd_ref_menu
