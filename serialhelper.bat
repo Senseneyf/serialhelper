@@ -28,7 +28,7 @@ goto menu
 
 :view_com_ports
 cls
-wmic path CIM_LogicalDevice where "Description like 'USB Serial Port%'" get Name /EVERY:10
+wmic path CIM_LogicalDevice where "Description like 'USB Serial Port%'" get Name
 goto menu
 
 :serial
