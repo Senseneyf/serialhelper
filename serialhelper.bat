@@ -26,7 +26,7 @@ echo %option% is not a valid option
 pause
 goto menu
 
-:view_ports
+:view_com_ports
 cls
 wmic path CIM_LogicalDevice where "Description like 'USB Serial Port%'" get Name /EVERY:10
 goto menu
