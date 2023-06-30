@@ -19,7 +19,7 @@ set /p option="Enter an option: "
 if "%option%" == "" goto menu
 if %option% == 1 goto serial
 if %option% == 2 goto serial_logging
-if %option% == 3 goto view_ports
+if %option% == 3 goto view_com_ports
 if %option% == 4 goto cmd_ref_menu
 if /i "%option%" == "q" goto end
 echo %option% is not a valid option
@@ -28,8 +28,7 @@ goto menu
 
 :view_ports
 cls
-mode
-pause
+wmic path CIM_LogicalDevice where "Description like 'USB Serial Port%'" get Name /EVERY:10
 goto menu
 
 :serial
