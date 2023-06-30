@@ -29,6 +29,7 @@ goto menu
 :view_com_ports
 cls
 wmic path CIM_LogicalDevice where "Description like 'USB Serial Port%'" get Name
+pause
 goto menu
 
 :serial
