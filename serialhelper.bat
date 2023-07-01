@@ -59,7 +59,7 @@ echo Title                          ^|      Command
 echo ===================================================
 echo Esblish connection with CM     ^|      wcscli -establishcmconnection -s 1 -u USERNAME -x PASSWORD
 echo Start serial session           ^|      wsccli -starbladeserialsession -i BLADE_INDEX
-echo View memory present in blade   ^|      wsccli -getbladehealth -i BLADE_INDEX -m
+echo View info on DIMMS in blade    ^|      wsccli -getbladehealth -i BLADE_INDEX -m
 echo/
 pause
 goto cmd_ref_menu
@@ -71,6 +71,7 @@ echo/
 echo Title                          ^|      Command
 echo ===================================================
 echo Start serial session           ^|      ^start serial session -i BLADE_INDEX
+echo CM Commands                    ^|      wcscli ^[Most commands work^]
 echo/
 pause
 goto cmd_ref_menu
