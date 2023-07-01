@@ -7,4 +7,4 @@ A simple batch script that makes starting a serial session with CMs/RMs easier.
 * Refrence guide for commands (Incomplete)
 
 ## Installation
-If running on a computer with putty installed in the environmental variables, simply download the file and run the .bat file.
+If running on a computer with putty installed in the environmental variables, simply download and run the .bat file.
