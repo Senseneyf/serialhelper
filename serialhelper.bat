@@ -1,5 +1,5 @@
 @echo off
-color 0a
+color 17
 
 set putty=putty.exe
 set port=""
