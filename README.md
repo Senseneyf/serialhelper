@@ -2,6 +2,9 @@
 A simple batch script that makes starting a serial session with CMs/RMs easier.
 
 ## Features
-* Starting a session with a specificed port with or withlout logging to a file
-* View active com portsa
-* Refrence guide for commands.
+* Start a serial session with a specificed port with or withlout logging to a file
+* Active COM port viewer
+* Refrence guide for commands
+
+## Installation
+If running on a computer with putty installed in the environmental variables, simply download the file and run the .bat file. Shoulnd be run on the local pc.
