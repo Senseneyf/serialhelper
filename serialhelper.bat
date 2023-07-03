@@ -74,7 +74,7 @@ goto menu
 :serial
 cls
 echo %_invert%Start a serial session%_reset%
-if "%default_port%" NEQ "" echo Default port is set to %_green%%default_port%%_reset%
+if %default_port% NEQ "" echo Default port is set to %_green%%default_port%%_reset% & set port=%default_port%
 echo ===================================================
 set /p port="Enter a port number to start, or q to go back: "
 if "%port%" == "q" goto menu
@@ -85,7 +85,7 @@ goto menu
 cls
 echo %_invert%Start a serial session with logging to a file enabled%_reset%
 echo Output will be saved to "putty.log"
-if "%default_port%" NEQ "" echo Default port is set to %default_port% 
+if %default_port% NEQ "" echo Default port is set to %default_port% & set port=%default_port%
 echo ===================================================
 set /p port="Enter a port number to start, or q to go back: "
 if "%port%" == "q" goto menu
