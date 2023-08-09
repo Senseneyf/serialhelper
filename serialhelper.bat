@@ -47,7 +47,7 @@ goto menu
 cls
 echo %_invert%View active COM ports%_reset%
 echo ===================================================
-wmic path CIM_LogicalDevice where "Description like 'USB Serial Port%'" get Name
+wmic path CIM_LogicalDevice where "Description LIKE '%%Prolific%%' OR Description LIKE 'USB Serial Port%'" get Name
 echo/
 pause
 goto default_port_prompt
