@@ -1,4 +1,4 @@
-# Serial Helper 1.2
+# Serial Helper 1.3
 A simple batch script that makes starting a serial session with CMs/RMs easier.
 
 ## Features
