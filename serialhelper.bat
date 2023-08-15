@@ -38,9 +38,9 @@ if %option% == 2 goto serial_logging
 if %option% == 3 goto view_com_ports
 if /i "%option%" == "q" goto end
 if /i "%option%" == "d" goto serial_default_speed
-if /i "%option%" == "config" call :create_config && call config.cmd && call :waiting_for "5" && goto menu
+if /i "%option%" == "create_config" call :create_config "0" && call config.cmd && call :waiting_for "5" && goto menu
 if /i "%option%" == "rm_config" del config.cmd && echo config.cmd deleted.. && call :waiting_for "5" && goto menu
-if /i "%option%" == "update_config" call :update_config && echo updating... config.cmd && call :waiting_for "10" && goto menu
+if /i "%option%" == "update_config" call :create_config "1" && echo updating... config.cmd && call :waiting_for "10" && goto menu
 if /i "%option%" == "cm" call :cm_ref "1"
 if /i "%option%" == "rm" call :rm_ref "1"
 if /i "%option%" == "cmds" goto :cmd_ref_menu
