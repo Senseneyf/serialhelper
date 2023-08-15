@@ -1,8 +1,8 @@
 @echo off
 set putty=putty.exe
 set ver=1.3
-set port=""
 set default_port=0
+title Serial Helper %ver%
 
 :cmd_colors
 color 17
@@ -37,7 +37,7 @@ if %option% == 1 goto serial
 if %option% == 2 goto serial_logging
 if %option% == 3 goto view_com_ports
 if /i "%option%" == "q" goto end
-if /i "%option%" == "d" goto serial_default_speed
+if /i "%option%" == "default" goto :serial_default_speed
 if /i "%option%" == "create_config" call :create_config "0" && call config.cmd && call :waiting_for "5" && goto menu
 if /i "%option%" == "rm_config" del config.cmd && echo config.cmd deleted.. && call :waiting_for "5" && goto menu
 if /i "%option%" == "update_config" call :create_config "1" && echo updating... config.cmd && call :waiting_for "10" && goto menu
@@ -150,7 +150,7 @@ echo ===================================================
 echo %_yellow%cm%_reset% - View Chassis Manager commands
 echo %_yellow%rm%_reset% - View Rack Manager commands
 echo %_yellow%cmds%_reset% - View RM/CM commands menu
-echo %_yellow%default%_reset% - Start a serial session with default speeds
+echo %_yellow%default%_reset% - Start a serial session with default speed of 96000
 echo/
 echo %_green%Debug Stuff%_reset%
 echo ===================================================
