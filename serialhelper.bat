@@ -41,9 +41,6 @@ if /i "%option%" == "default" goto :serial_default_speed
 if /i "%option%" == "create_config" call :create_config "0" && call config.cmd && call :waiting_for "5" && goto menu
 if /i "%option%" == "rm_config" del config.cmd && echo config.cmd deleted.. && call :waiting_for "5" && goto menu
 if /i "%option%" == "update_config" call :create_config "1" && echo updating... config.cmd && call :waiting_for "10" && goto menu
-if /i "%option%" == "cm" call :cm_ref "1"
-if /i "%option%" == "rm" call :rm_ref "1"
-if /i "%option%" == "cmds" goto :cmd_ref_menu
 if /i "%option%" == "?" goto :help
 if /i "%option%" == "h" goto :help
 echo %option% is not a valid option
@@ -110,46 +107,10 @@ if "%port%" == "q" goto menu
 %putty% -serial COM%port% -sercfg 9600,8,n,1,N
 goto menu
 
-:cm_ref
-cls
-setlocal
-set i=%~1
-echo %_invert%Chassis Manager commands%_reset%
-echo You must first authenticate yourself with -establishcmconnection before using other commands.
-echo/
-echo Title                          ^|      Command
-echo ===================================================
-echo Esblish connection with CM     ^|      wcscli -establishcmconnection -s 1 -u %_yellow%USERNAME%_reset% -x %_yellow%PASSWORD%_reset%
-echo Start serial session           ^|      wsccli -starbladeserialsession -i %_yellow%BLADE_INDEX%_reset%
-echo View info on DIMMS in blade    ^|      wsccli -getbladehealth -i %_yellow%BLADE_INDEX%_reset% -m
-echo/
-pause
-if %i% equ 0 goto :cmd_ref_menu
-goto :menu
-
-:rm_ref
-cls
-setlocal
-set i=%~1
-echo %_invert%Rack Manager commands%_reset%
-echo You will be met with a login prompt, login first to use commands.
-echo/
-echo Title                          ^|      Command
-echo ===================================================
-echo Start serial session           ^|      ^start serial session -i %_yellow%BLADE_INDEX%_reset%
-::echo CM Commands                    ^|      wcscli -command %_yellow%Most commands work%_reset%
-echo/
-pause
-if %i% equ 0 goto :cmd_ref_menu
-goto :menu
-
 :help
 cls
 echo %_invert%Help/additonal options%_reset%
 echo ===================================================
-echo %_yellow%cm%_reset% - View Chassis Manager commands
-echo %_yellow%rm%_reset% - View Rack Manager commands
-echo %_yellow%cmds%_reset% - View RM/CM commands menu
 echo %_yellow%default%_reset% - Start a serial session with default speed of 96000
 echo/
 echo %_green%Debug Stuff%_reset%
@@ -161,26 +122,6 @@ echo/
 pause
 goto menu
 
-:cmd_ref_menu
-cls
-echo %_invert%CM/RM Commands%_reset%
-echo ===================================================
-echo %_yellow%1%_reset% - Chassis Manager commands
-echo %_yellow%2%_reset% - Rack Manager commands
-echo %_yellow%q%_reset% - Back to main menu
-echo %_yellow%qq%_reset% - Quit
-echo ===================================================
-set /p option2="Enter an option: "
-if "%option2%" == "" goto cmd_ref_menu
-if %option2% == 1 goto cm_ref
-if %option2% == 2 goto rm_ref
-if /i "%option2%" == "q" goto menu
-if /i "%option2%" == "qq" goto end
-echo %option2% is not a valid option
-echo/
-pause
-goto cmd_ref_menu
-
 :create_config
 setlocal
 if %~1 neq 1 echo %_yellow%No config file found, creating config.cmd...%_reset%
@@ -189,7 +130,7 @@ if %~1 neq 1 echo %_yellow%No config file found, creating config.cmd...%_reset%
 (echo echo config.cmd loaded successfully)>>config.cmd
 (echo set /A default_port=%default_port% && echo echo The default port was set to %_green%%%default_port%%%_reset%)>>config.cmd
 (echo exit /b)>>config.cmd
-if %1 equ 1 echo %_green%config.cmd has been updated.%_reset%
+if %~1 equ 1 echo %_green%config.cmd has been updated.%_reset%
 exit /back
 
 :waiting_for
