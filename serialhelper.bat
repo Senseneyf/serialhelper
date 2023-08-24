@@ -59,7 +59,7 @@ goto default_port_prompt
 
 :default_port_prompt
 set "option4"=""
-set /p option4="Would you like to set a default port for this session? (y)es or (n)o: "
+set /p option4="Would you like to set a default port? (y)es or (n)o: "
 if /i "%option4%" == "y" goto set_default_port
 if /i "%option4%" == "n" goto menu
 echo Please only enter (y)es or (n)o
